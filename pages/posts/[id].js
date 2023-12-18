@@ -9,3 +9,12 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+export async function getStaticProps({ params }) {
+  const { post: post } = await getPostData(params.id);
+  return {
+    props: {
+      post,
+    },
+  };
+}
